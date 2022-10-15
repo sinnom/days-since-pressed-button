@@ -15,7 +15,7 @@ const handler: Handler = async (event, context) => {
     // endpoint: "db.us.fauna.com" // This is optional: https://docs.fauna.com/fauna/current/drivers/connections?lang=javascript
   });
 
-  const updateLastPressed = client.query(
+  client.query(
     query.Update(
       Ref(Collection("last-pressed"), "345618077737549902"),
       {
@@ -25,6 +25,13 @@ const handler: Handler = async (event, context) => {
       }
     )
   )
+    .then((ret) => console.log(ret))
+    .catch((err) => console.error(
+      'Error: [%s] %s: %s',
+      err.name,
+      err.message,
+      err.errors()[0].description,
+    ))
 
   return {
     statusCode: 200,
