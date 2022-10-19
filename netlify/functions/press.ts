@@ -24,7 +24,11 @@ const handler: Handler = async (event, context) => {
         }
       }
     )
-  );
+  )
+    .then(
+      (res) => console.log(`FaunaDB promise fulfilled: ${JSON.stringify(res)}`),
+      (err) => console.log(`FaunaDB promise REJECTED: ${JSON.stringify(err)}`)
+    );
 
   return {
     statusCode: 200,
