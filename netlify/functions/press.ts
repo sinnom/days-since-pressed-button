@@ -26,7 +26,7 @@ const handler: Handler = async (event, context) => {
     )
   )
     .then(
-      (result) => console.log(`FaunaDB promise fulfilled: ${JSON.stringify(result)}`),
+      (result) => console.log(`FaunaDB promise fulfilled: ${result}`),
     )
     .catch((err) => console.log(`FaunaDB promise REJECTED: ${JSON.stringify(err)}`)
     );
